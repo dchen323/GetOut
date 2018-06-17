@@ -1,7 +1,11 @@
+const path = require("path");
 module.exports = {
+  context: __dirname,
   entry: "./lib/main.js",
   output: {
-  	filename: "./lib/bundle.js"
+    path: path.resolve(__dirname),
+    filename: "bundle.js"
   },
+
   devtool: 'source-map',
 };
