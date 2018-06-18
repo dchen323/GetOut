@@ -5,4 +5,25 @@
 
 body {
   display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  height: auto;
+  width: 25%;
+  display: grid;
+  grid-template-rows: 0.5fr 2fr 1fr;
+  text-align: center;
+}
+
+.self {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.icon-git {
+  font-size: 5vw;
+
 }
