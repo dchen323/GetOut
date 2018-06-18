@@ -2,7 +2,7 @@
 
 ## Background and Overview
 
-Get Out is a browser game where the user tries to escape. The game starts with the player on a ledge near the left hand side of the screen. The user can use his mouse to click on a point on the screen to release a hook that can attach to parts of the ceilings to swing him across the screen. The player wins when the door or loses when he either falls into the bottom of the screen or swings to the bottom of the screen.
+Get Out is a single screen browser game where the user tries to escape. The game starts with the player on a ledge near the left hand side of the screen. The user can use his mouse to click on a point on the screen to release a hook that can attach to parts of the ceilings to swing him across the screen. The player wins when the the chicken reaches the door or loses when he either falls into the bottom of the screen or swings to the bottom of the screen.
 
 ## Functionality & MVP
 
@@ -18,7 +18,7 @@ Get Out is a browser game where the user tries to escape. The game starts with t
 
 The webpage will have the game canvas, which includes the player's sprite, hook, ceiling objects and fire on the floor.
 
-On the left side of the page, there will be a title, instructions, and links to my Github and LinkedIn.
+On the left side of the page, there will be a title, instructions, and links to my Github and LinkedIn made with just using a div in html.
 
 ![game](https://s33.postimg.cc/5aid1nslb/javascript_wireframes.png)
 
@@ -31,9 +31,9 @@ This technologies used are
 The scripts needed for this project are.
 
   * ```map.js ``` to render the canvas elements.
-  * ```sprite.js``` for the sprite logic.
-  * ```hook.js``` for the hook logic.
-  * ```main.js``` to run the game.
+  * ```sprite.js``` for the sprite logic including gravity, swing speed.
+  * ```hook.js``` for the hook logic that will determine the swing speed.
+  * ```game.js``` to run the game.
 
 ## Project Timeline
   ### Day 1
