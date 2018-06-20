@@ -8,6 +8,13 @@ body {
   flex-direction: row;
 }
 
+#canvas-holder {
+  overflow: hidden;
+  width: 75vw;
+  height: auto;
+  border-right: 1px solid black;
+}
+
 .sidebar {
   height: auto;
   width: 25%;
