@@ -20,8 +20,13 @@ body {
   height: auto;
   width: 25%;
   display: grid;
-  grid-template-rows: 0.5fr 1.5fr 1fr;
+  grid-template-rows: 0.5fr 0.5fr 1.5fr 0.5fr;
   text-align: center;
+}
+
+.background{
+  background-image: url('../images/chicken_background.jpg');
+  background-size: cover;
 }
 
 .title {
