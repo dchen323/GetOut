@@ -272,11 +272,7 @@ class Game {
     this.ctx.fillText("Press Spacebar",150, 150);
     this.ctx.fillText("to", 400, 250);
     this.ctx.fillText("Start!", 320, 350);
-    let bgmusic = new Audio("../sound/OffLimits.wav");
-    bgmusic.play();
-    bgmusic.loop = true;
-    bgmusic.volume = 0.25;
-    bgmusic.load();
+    document.getElementById("audio").play();
   }
 
   checkCollision(){
@@ -315,7 +311,6 @@ class Game {
         this.chicken.updateSwing(this.hook);
         this.hook.setPos(this.chicken.x + this.chicken.sx, this.chicken.y);
       }else if(!this.checkCollision()){
-        console.log(this.chicken.dx);
         this.chicken.x += this.chicken.dx/200;
         this.chicken.y += + 0.85;
         this.chicken.animate();
@@ -556,11 +551,17 @@ class Map {
 __webpack_require__.r(__webpack_exports__);
 
 class Sounds {
-  constructor(src){
-    this.sound = new Audio(src);
-    this.sound.loop = true;
-    this.sound.volume = 0.25;
-    this.sound.load();
+  constructor(){
+    this.sound = document.getElementById('audio');
+    this.sound.style.display = "none";
+  }
+
+  play(){
+    this.sound.play();
+  }
+
+  stop(){
+    this.sound.pause();
   }
 }
 
