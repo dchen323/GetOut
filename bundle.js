@@ -416,6 +416,7 @@ class Hook {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _game__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./game */ "./lib/game.js");
 /* harmony import */ var _hook__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hook */ "./lib/hook.js");
+/* harmony import */ var _sound__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sound */ "./lib/sound.js");
 
 
 
@@ -442,6 +443,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let hook = new _hook__WEBPACK_IMPORTED_MODULE_1__["default"](ctx);
     hook.xEnd = eventx;
     hook.setPos(game.chicken.x + game.chicken.sx,game.chicken.y - 2);
+    const sound = new _sound__WEBPACK_IMPORTED_MODULE_2__["default"]("./sound/launch.wav");
+    sound.play();
     game.hook = hook;
     game.mouseDown = true;
 
@@ -533,6 +536,40 @@ class Map {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Map);
+
+
+/***/ }),
+
+/***/ "./lib/sound.js":
+/*!**********************!*\
+  !*** ./lib/sound.js ***!
+  \**********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+class Sound {
+  constructor(src){
+    this.sound = document.createElement('audio');
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls","none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+  }
+
+  play(){
+    this.sound.play();
+  }
+
+  stop(){
+    this.sound.pause();
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Sound);
 
 
 /***/ })
