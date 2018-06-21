@@ -311,7 +311,7 @@ class Game {
         this.hook.setPos(this.chicken.x + this.chicken.sx, this.chicken.y);
       }else if(!this.checkCollision()){
         this.chicken.x += this.chicken.dx/50;
-        this.chicken.y += + 0.85;
+        this.chicken.y += + 0.80;
         this.chicken.animate();
       }
       this.map.makeAnimatedFire();
@@ -507,7 +507,7 @@ class Map {
 
   makeAnimatedFire(){
     let fire = new Image();
-    fire.src = "./images/fire.png";
+    fire.src = "./images/fire.PNG";
     let sx2 = 50;
     let sy2 = 50;
     let cx2 = -5;
@@ -520,7 +520,7 @@ class Map {
 
   makeFire(){
     let fire = new Image();
-    fire.src = "./images/fire.png";
+    fire.src = "./images/fire.PNG";
     let sx2 = 50;
     let sy2 = 50;
     let cx2 = -5;
