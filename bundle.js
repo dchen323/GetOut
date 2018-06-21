@@ -233,8 +233,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./map */ "./lib/map.js");
 /* harmony import */ var _hook__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hook */ "./lib/hook.js");
 /* harmony import */ var _chicken_coop__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./chicken_coop */ "./lib/chicken_coop.js");
-/* harmony import */ var _sound__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sound */ "./lib/sound.js");
-
 
 
 
@@ -507,7 +505,7 @@ class Map {
 
   makeAnimatedFire(){
     let fire = new Image();
-    fire.src = "./images/fire.PNG";
+    fire.src = "./images/fire.png";
     let sx2 = 50;
     let sy2 = 50;
     let cx2 = -5;
@@ -520,7 +518,7 @@ class Map {
 
   makeFire(){
     let fire = new Image();
-    fire.src = "./images/fire.PNG";
+    fire.src = "./images/fire.png";
     let sx2 = 50;
     let sy2 = 50;
     let cx2 = -5;
@@ -536,17 +534,6 @@ class Map {
 
 /* harmony default export */ __webpack_exports__["default"] = (Map);
 
-
-/***/ }),
-
-/***/ "./lib/sound.js":
-/*!**********************!*\
-  !*** ./lib/sound.js ***!
-  \**********************/
-/*! exports provided: default */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/danielchen/AppAcademy/GetOut/lib/sound.js'");
 
 /***/ })
 
