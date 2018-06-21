@@ -158,6 +158,8 @@ class Chicken {
   updateSwing(hook){
     this.x = hook.xEnd - Math.sin(hook.radian) * hook.length;
     this.y = hook.yEnd + Math.cos(hook.radian) * hook.length;
+    this.dx = Math.sin(hook.radian) * -1 * hook.length;
+    this.dy = Math.cos(hook.radian) * hook.length;
     this.animate();
   }
 
@@ -231,6 +233,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./map */ "./lib/map.js");
 /* harmony import */ var _hook__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hook */ "./lib/hook.js");
 /* harmony import */ var _chicken_coop__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./chicken_coop */ "./lib/chicken_coop.js");
+/* harmony import */ var _sound__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sound */ "./lib/sound.js");
+
 
 
 
@@ -250,6 +254,7 @@ class Game {
     this.checkCollision = this.checkCollision.bind(this);
     this.updateScore = this.updateScore.bind(this);
     this.score = 0;
+
   }
 
 
@@ -267,6 +272,11 @@ class Game {
     this.ctx.fillText("Press Spacebar",150, 150);
     this.ctx.fillText("to", 400, 250);
     this.ctx.fillText("Start!", 320, 350);
+    let bgmusic = new Audio("../sound/OffLimits.wav");
+    bgmusic.play();
+    bgmusic.loop = true;
+    bgmusic.volume = 0.25;
+    bgmusic.load();
   }
 
   checkCollision(){
@@ -305,8 +315,9 @@ class Game {
         this.chicken.updateSwing(this.hook);
         this.hook.setPos(this.chicken.x + this.chicken.sx, this.chicken.y);
       }else if(!this.checkCollision()){
-        this.chicken.x += this.chicken.dx/500;
-        this.chicken.y += (this.chicken.dy/500 + 0.85);
+        console.log(this.chicken.dx);
+        this.chicken.x += this.chicken.dx/200;
+        this.chicken.y += + 0.85;
         this.chicken.animate();
       }
       this.map.makeAnimatedFire();
@@ -530,6 +541,30 @@ class Map {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Map);
+
+
+/***/ }),
+
+/***/ "./lib/sound.js":
+/*!**********************!*\
+  !*** ./lib/sound.js ***!
+  \**********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+class Sounds {
+  constructor(src){
+    this.sound = new Audio(src);
+    this.sound.loop = true;
+    this.sound.volume = 0.25;
+    this.sound.load();
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Sounds);
 
 
 /***/ })
