@@ -238,6 +238,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const SPRITESIZE = 80;
+
 class Game {
   constructor(ctx){
     this.ctx = ctx;
@@ -287,11 +289,11 @@ class Game {
       this.ctx.font = "6vw Courier";
       this.ctx.fillStyle="#f4a142";
       this.ctx.fillText("CONGRATS YOU WIN!",
-        this.ctx.canvas.width - 850, this.ctx.canvas.height /2);
+        this.ctx.canvas.width * 0.87, this.ctx.canvas.height /2);
     }else if (this.chicken.lose()){
       let textPlace = this.score < 53 ?
-        this.chicken.x : this.ctx.canvas.width - 850;
-      this.ctx.drawImage(this.loseImage,this.chicken.x,this.chicken.y,80,80);
+        this.chicken.x : this.ctx.canvas.width * 0.88;
+      this.ctx.drawImage(this.loseImage,this.chicken.x,this.chicken.y,SPRITESIZE,SPRITESIZE);
       this.ctx.font = "8vw Courier";
       this.ctx.fillStyle="red";
       this.ctx.fillText("BBQ Chicken",
@@ -444,8 +446,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let hook = new _hook__WEBPACK_IMPORTED_MODULE_1__["default"](ctx);
     hook.xEnd = eventx;
     hook.setPos(game.chicken.x + game.chicken.sx,game.chicken.y - 2);
-    const sound = new _sound__WEBPACK_IMPORTED_MODULE_2__["default"]("./sound/launch.wav");
-    sound.play();
+    if (event.x > window.innerWidth/ 4){
+      const sound = new _sound__WEBPACK_IMPORTED_MODULE_2__["default"]("./sound/launch.wav");
+      sound.play();
+    }
     game.hook = hook;
     game.mouseDown = true;
 
@@ -487,10 +491,11 @@ class Map {
   }
 
   makeCeiling(){
+    let ceilingCount = Math.round(this.ctx.canvas.width /363);
     let x = 0;
     let y = 0;
     let width = (Math.random() + 0.5) * 300;
-    for(let i = 0; i < 20; i++) {
+    for(let i = 0; i < ceilingCount; i++) {
       this.ceiling[i] = new _ceiling__WEBPACK_IMPORTED_MODULE_0__["default"](this.ctx,x,y,width);
       x = x + width + (Math.random() + 0.5) * 100;
       width = (Math.random()+ 0.5) * 300;
