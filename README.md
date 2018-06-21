@@ -1,5 +1,7 @@
 # Get Out
 
+[Live Link](https://dchen323.github.io/GetOut/)
+
 ## Background and Overview
 
 Get Out is a single screen browser game where the user tries to escape. The game starts with the player on a ledge near the left hand side of the screen. The user can use his mouse to click on a point on the screen to release a hook that can attach to parts of the ceilings to swing him across the screen. The player wins when the the chicken reaches the door or loses when he either falls into the bottom of the screen or swings to the bottom of the screen.
