@@ -434,6 +434,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener('keypress', (event) => {
     if (event.keyCode === 32){
       game.animate();
+      document.getElementById('audio').play();
     }
   });
 
