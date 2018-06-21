@@ -1,6 +1,7 @@
 #canvas {
   border: 1px solid black;
   background: lightgray;
+  height: 100%;
 }
 
 body {

@@ -272,7 +272,6 @@ class Game {
     this.ctx.fillText("Press Spacebar",150, 150);
     this.ctx.fillText("to", 400, 250);
     this.ctx.fillText("Start!", 320, 350);
-    document.getElementById("audio").play();
   }
 
   checkCollision(){
@@ -311,7 +310,7 @@ class Game {
         this.chicken.updateSwing(this.hook);
         this.hook.setPos(this.chicken.x + this.chicken.sx, this.chicken.y);
       }else if(!this.checkCollision()){
-        this.chicken.x += this.chicken.dx/200;
+        this.chicken.x += this.chicken.dx/50;
         this.chicken.y += + 0.85;
         this.chicken.animate();
       }
@@ -545,28 +544,9 @@ class Map {
   !*** ./lib/sound.js ***!
   \**********************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-
-class Sounds {
-  constructor(){
-    this.sound = document.getElementById('audio');
-    this.sound.style.display = "none";
-  }
-
-  play(){
-    this.sound.play();
-  }
-
-  stop(){
-    this.sound.pause();
-  }
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Sounds);
-
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/danielchen/AppAcademy/GetOut/lib/sound.js'");
 
 /***/ })
 
