@@ -95,5 +95,6 @@ panUser(){
 
 ## Future Implementation
 
+* Add a restart button to reset everything
 * Allow a faster velocity/swing motion.
 * Create a ceiling collision affect with the chicken.

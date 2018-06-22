@@ -300,15 +300,14 @@ class Game {
         textPlace, this.ctx.canvas.height /2);
     }else{
       if(this.mouseDown){
-        if(this.checkCollision()){
-          this.hook.update();
-        }else{
+        if(!this.checkCollision()){
           this.hook.draw();
         }
       }
       if(this.checkCollision()){
         this.chicken.updateSwing(this.hook);
         this.hook.setPos(this.chicken.x + this.chicken.sx, this.chicken.y);
+        this.hook.update();
       }else if(!this.checkCollision()){
         this.chicken.x += this.chicken.dx/50;
         this.chicken.y += + 0.80;
