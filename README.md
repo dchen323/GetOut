@@ -8,23 +8,14 @@ Get Out is a single screen browser game where the user tries to escape. The game
 
 ![demo](https://res.cloudinary.com/dchen3/image/upload/v1529600128/get_out.gif)
 
-## Functionality & MVP
+## Functionality
 
   * Players can navigate through the map by swinging on a hook that they release on mouse click.
   * Players win when the reach the door.
   * Players lose when they fall into the fire.
   * Distance/score traveled will be displayed.
   * Add effects on winning/losing.
-  ### Bonus
-  * Adding Music.
-
-## Wireframes
-
-The webpage will have the game canvas, which includes the player's sprite, hook, ceiling objects and fire on the floor.
-
-On the left side of the page, there will be a title, instructions, and links to my Github and LinkedIn made with just using a div in html.
-
-![game](https://s33.postimg.cc/5aid1nslb/javascript_wireframes.png)
+  * Adding music and sound effects for hook release.
 
 ## Architecture & Technologies
 
@@ -41,26 +32,7 @@ The scripts needed for this project are.
   * ```game.js``` to run the game.
   * ```sound.js``` to add sound effects to the game
 
-## Project Timeline
-  ### Day 1
-  * Set up basic canvas background.
-  * Render sprite and hook.
-  * Implement hook collision logic.
 
-  ### Day 2
-  * Create hook/sprite swing movement logic.
-  * Add gravity logic.
-  * Render moving canvas background.
-
-  ### Day 3
-  * Create door for winning.
-  * Implement win/losing animations.
-  * Display score.
-
-  ### Day 4
-  * Fix any bugs.
-  * Add sound effects
-  * Add background music
 
 ## Challenges
 
@@ -92,6 +64,10 @@ panUser(){
   canvasHolder.scrollLeft = this.chicken.x - 100;
 }
 ```
+
+## Additional Resources
+
+See proposal folder for wireframe and project timeline.
 
 ## Future Implementation
 
