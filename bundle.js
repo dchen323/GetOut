@@ -250,6 +250,7 @@ class Game {
     this.loseImage = new Image();
     this.loseImage.src = './images/roasted_chicken.png';
     this.animate = this.animate.bind(this);
+    this.stopGame = this.stopGame.bind(this);
     this.update = this.update.bind(this);
     this.checkCollision = this.checkCollision.bind(this);
     this.updateScore = this.updateScore.bind(this);
@@ -332,10 +333,16 @@ class Game {
   }
 
   animate(){
-    requestAnimationFrame(this.animate);
+    this.frame = requestAnimationFrame(this.animate);
     this.ctx.clearRect(0,50,this.ctx.canvas.width, this.ctx.canvas.height);
     this.panUser();
     this.update();
+  }
+
+  stopGame() {
+    if(this.frame){
+      cancelAnimationFrame(this.frame);
+    }
   }
 
 }
@@ -438,10 +445,13 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById('audio').play();
     }else if( event.keyCode === 13){
       ctx.clearRect(0,0, canvas.width, canvas.height);
+      game.stopGame();
       game.chicken.x = 90;
       game.chicken.y = 260;
       game.chicken.dx = 0;
       game.chicken.dy = 0;
+      game.chicken.animate();
+      canvasHolder.scrollLeft = 0;
       game.init();
     }
   });
