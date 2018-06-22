@@ -433,6 +433,7 @@ __webpack_require__.r(__webpack_exports__);
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext('2d');
+  let canvasHolder = document.getElementById("canvas-holder");
 
   canvas.width = window.innerWidth * 5;
   canvas.height = window.innerHeight;
