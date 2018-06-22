@@ -291,6 +291,9 @@ class Game {
       this.ctx.fillStyle="#f4a142";
       this.ctx.fillText("CONGRATS YOU WIN!",
         this.ctx.canvas.width * 0.87, this.ctx.canvas.height /2);
+      this.ctx.font = "5vw Courier";
+      this.ctx.fillText("Press Enter to Restart",
+        this.ctx.canvas.width * 0.86, this.ctx.canvas.height /2 + 200);
     }else if (this.chicken.lose()){
       let textPlace = this.score < this.ctx.canvas.width * 0.85/100 ?
         this.chicken.x : this.ctx.canvas.width * 0.88;
