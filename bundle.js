@@ -292,7 +292,7 @@ class Game {
       this.ctx.fillText("CONGRATS YOU WIN!",
         this.ctx.canvas.width * 0.87, this.ctx.canvas.height /2);
       this.ctx.font = "4.5vw Courier";
-      this.ctx.fillText("Press Enter to Restart",
+      this.ctx.fillText("Press R to Restart",
         this.ctx.canvas.width * 0.87, this.ctx.canvas.height /2 + 200);
     }else if (this.chicken.lose()){
       let textPlace = this.score < this.ctx.canvas.width * 0.85/100 ?
@@ -303,7 +303,7 @@ class Game {
       this.ctx.fillText("BBQ Chicken",
         textPlace, this.ctx.canvas.height /2);
       this.ctx.font = "4.5vw Courier";
-      this.ctx.fillText("Press Enter to Restart",
+      this.ctx.fillText("Press R to Restart",
           textPlace * 0.99, this.ctx.canvas.height /2 + 200);
     }else{
       if(this.mouseDown){
@@ -449,7 +449,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener('keypress', (event) => {
     if (event.keyCode === 32){
       game.animate();
-    }else if( event.keyCode === 13){
+    }else if( event.keyCode === 114){
       ctx.clearRect(0,0, canvas.width, canvas.height);
       game.stopGame();
       game.chicken.x = 90;
