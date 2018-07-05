@@ -10,10 +10,14 @@
   <body class="game">
     <div class="sidebar">
       <h2 class="title">Get Out</h2>
-      <content class="direction">
-        Use the mouse to create a hook and hold to swing towards the finish line! Be careful not to fall in the fire!
-        <audio controls autoplay loop id ="audio" src="./sound/OffLimits.wav"></audio>
-      </content>
+      <div class="direction-audio">
+        <content class="direction">
+          Use the mouse to create a hook and hold to swing towards the finish line! Be careful not to fall in the fire!
+          <audio autoplay loop id ="audio" src="./sound/OffLimits.wav"></audio>
+        </content>
+        <button id ="audio-play" class="audio-playing"><i class="fas fa-play"></i></button>
+        <button id ="audio-play" class="audio-playing"><i class="fas fa-pause"></i></button>
+      </div>
       <div class="background"></div>
       <div class="self">
         <a href="https://github.com/dchen323/GetOut"><i class="fab fa-github icon-git"></i></a>
