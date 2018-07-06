@@ -265,15 +265,15 @@ class Game {
     this.chicken.draw();
     this.map.makePlatform();
     this.map.makeFire();
-    this.ctx.font = "6vw Courier";
+    this.ctx.font = "7vw Sans-serif";
     const gradient= this.ctx.createLinearGradient(0,0,800,150);
     gradient.addColorStop("0.33","#F0CB35");
     gradient.addColorStop("0.66","#fe8c00");
     gradient.addColorStop("0.99","#C02425");
     this.ctx.fillStyle= gradient;
-    this.ctx.fillText("Press Spacebar",150, 150);
-    this.ctx.fillText("to", 400, 250);
-    this.ctx.fillText("Start!", 320, 350);
+    this.ctx.fillText("Press Spacebar",200, 200);
+    this.ctx.fillText("to", 500, 300);
+    this.ctx.fillText("Start!", 420, 400);
   }
 
   checkCollision(){
@@ -288,24 +288,24 @@ class Game {
 
   update(){
     if(this.chickenCoop.checkWin(this.chicken)){
-      this.ctx.font = "6vw Courier";
+      this.ctx.font = "6vw Sans-serif";
       this.ctx.fillStyle="#f4a142";
       this.ctx.fillText("CONGRATS YOU WIN!",
-        this.ctx.canvas.width * 0.87, this.ctx.canvas.height /2);
-      this.ctx.font = "4.5vw Courier";
+        this.ctx.canvas.width * 0.86, this.ctx.canvas.height /2);
+      this.ctx.font = "6vw Sans-serif";
       this.ctx.fillText("Press R to Restart",
         this.ctx.canvas.width * 0.87, this.ctx.canvas.height /2 + 200);
     }else if (this.chicken.lose()){
       let textPlace = this.score < this.ctx.canvas.width * 0.85/100 ?
         this.chicken.x : this.ctx.canvas.width * 0.88;
       this.ctx.drawImage(this.loseImage,this.chicken.x,this.chicken.y,SPRITESIZE,SPRITESIZE);
-      this.ctx.font = "8vw Courier";
+      this.ctx.font = "9vw Sans-serif";
       this.ctx.fillStyle="red";
       this.ctx.fillText("BBQ Chicken",
         textPlace, this.ctx.canvas.height /2);
-      this.ctx.font = "4.5vw Courier";
+      this.ctx.font = "6vw Sans-serif ";
       this.ctx.fillText("Press R to Restart",
-          textPlace * 0.99, this.ctx.canvas.height /2 + 200);
+          textPlace, this.ctx.canvas.height /2 + 200);
     }else{
       if(this.mouseDown){
         if(!this.checkCollision()){
