@@ -255,6 +255,7 @@ class Game {
     this.checkCollision = this.checkCollision.bind(this);
     this.updateScore = this.updateScore.bind(this);
     this.score = 0;
+    this.music = true;
 
   }
 
@@ -484,7 +485,22 @@ document.addEventListener("DOMContentLoaded", () => {
     game.hook = null;
   });
 
-
+  document.addEventListener('click', () => {
+    const audioPlay = document.getElementById('audio-play');
+    const audioPause = document.getElementById('audio-pause');
+    const audioPlayer = document.getElementById('audio');
+    if (game.music === true){
+      audioPlayer.pause();
+      audioPause.className = "hidden";
+      audioPlay.classList.remove("hidden");
+      game.music = false;
+    }else{
+      audioPlayer.play();
+      audioPlay.className = "hidden";
+      audioPause.classList.remove("hidden");
+      game.music = true;
+    }
+  });
 
 
 

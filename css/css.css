@@ -51,12 +51,15 @@ body {
 
 .icon-git {
   font-size: 5vw;
-
 }
 
-#audio-play {
+#audio-play, #audio-pause {
   width: 20%;
   margin: 1vw
+}
+
+.hidden {
+  display: none;
 }
 
 .direction-audio {
