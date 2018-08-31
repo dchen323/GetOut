@@ -1,43 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>GetOut</title>
-    <link rel="stylesheet" href="./css/css.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <link rel="icon" href="images/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=Eater" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122000726-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
-      gtag('config', 'UA-122000726-1');
-    </script>
-  </head>
-  <body class="game">
-    <div class="sidebar">
-      <h2 class="title">Get Out</h2>
-      <div class="direction-audio">
-        <content class="direction">
-          Use the mouse to create a hook and hold to swing towards the finish line! Be careful not to fall in the fire!
-          <audio autoplay loop id ="audio" src="./sound/OffLimits.wav"></audio>
-        </content>
-        <button id ="audio-pause"><i  class="fas fa-pause"></i></button>
-        <button id ="audio-play" class="hidden"><i class="fas fa-play"></i></button>
-      </div>
-      <div class="background"></div>
-      <div class="self">
-        <a href="https://github.com/dchen323/GetOut"><i class="fab fa-github icon-git"></i></a>
-        <a href="https://www.linkedin.com/in/daniel-chen92/"><i class="fab fa-linkedin icon-git"></i></a>
-      </div>
+<head>
+  <meta charset="utf-8">
+  <title>GetOut</title>
+  <link rel="stylesheet" href="./css/css.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <link rel="icon" href="images/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=Eater" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122000726-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-122000726-1');
+  </script>
+</head>
+
+<body class="game">
+  <div class="sidebar">
+    <h2 class="title">Get Out</h2>
+    <div class="direction-audio">
+      <content class="direction">
+        Hold the mouse down to create a hook and release to swing towards the finish line! Be careful not to fall in the fire!
+        <audio autoplay loop id="audio" src="./sound/OffLimits.wav"></audio>
+      </content>
+      <button id="audio-pause"><i class="fas fa-pause"></i></button>
+      <button id="audio-play" class="hidden"><i class="fas fa-play"></i></button>
     </div>
-    <div id="canvas-holder">
-      <canvas id="canvas"></canvas>
+    <div class="background"></div>
+    <div class="self">
+      <a href="https://github.com/dchen323/GetOut"><i class="fab fa-github icon-git"></i></a>
+      <a href="https://www.linkedin.com/in/daniel-chen92/"><i class="fab fa-linkedin icon-git"></i></a>
     </div>
-  </body>
-  <script type="text/javascript" src="bundle.js"></script>
+  </div>
+  <div id="canvas-holder">
+    <canvas id="canvas"></canvas>
+  </div>
+</body>
+<script type="text/javascript" src="bundle.js"></script>
+
 </html>

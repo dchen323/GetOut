@@ -130,7 +130,7 @@ const YSTART = 260;
 const SPRITESIZE = 40;
 
 class Chicken {
-  constructor(ctx){
+  constructor(ctx) {
     this.x = XSTART;
     this.y = YSTART;
     this.sx = SPRITESIZE;
@@ -138,24 +138,22 @@ class Chicken {
     this.ctx = ctx;
     this.image = new Image();
     this.image.src = "./images/chicken.png";
-    this.animate = this.animate.bind(this);
     this.swing = true;
     this.dx = 0;
     this.dy = 0;
   }
 
-  draw(){
+  draw() {
     this.image.onload = () => {
-      this.ctx.drawImage(this.image, this.x, this.y, this.sx,this.sy);
+      this.ctx.drawImage(this.image, this.x, this.y, this.sx, this.sy);
     };
-
   }
 
-  animate(){
-    this.ctx.drawImage(this.image,this.x,this.y,this.sx,this.sy);
+  animate() {
+    this.ctx.drawImage(this.image, this.x, this.y, this.sx, this.sy);
   }
 
-  updateSwing(hook){
+  updateSwing(hook) {
     this.x = hook.xEnd - Math.sin(hook.radian) * hook.length;
     this.y = hook.yEnd + Math.cos(hook.radian) * hook.length;
     this.dx = Math.sin(hook.radian) * -1 * hook.length;
@@ -163,11 +161,9 @@ class Chicken {
     this.animate();
   }
 
-  lose(){
-    return (this.y + this.sy
-        >= this.ctx.canvas.height - 45) ;
+  lose() {
+    return this.y + this.sy >= this.ctx.canvas.height - 45;
   }
-
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Chicken);
@@ -187,32 +183,31 @@ __webpack_require__.r(__webpack_exports__);
 const SPRITESIZE = 125;
 
 class ChickenCoop {
-  constructor(ctx){
+  constructor(ctx) {
     this.ctx = ctx;
     this.image = new Image();
-    this.image.src= "./images/chicken_coop.png";
+    this.image.src = "./images/chicken_coop.png";
     this.sx = SPRITESIZE;
     this.sy = SPRITESIZE;
     this.x = this.ctx.canvas.width - 200;
     this.y = ctx.canvas.height / 2 + 50;
-    this.draw = this.draw.bind(this);
   }
 
-  draw(){
-    this.ctx.drawImage(this.image,this.x,this.y,this.sx,this.sy);
+  draw() {
+    this.ctx.drawImage(this.image, this.x, this.y, this.sx, this.sy);
   }
 
-  checkWin(chicken){
-    if (chicken.x < this.x + this.sx &&
-        chicken.x + chicken.sx > this.x &&
-        chicken.y < this.y + this.sy &&
-        chicken.y + chicken.sy > this.y){
-          return 1;
+  checkWin(chicken) {
+    if (
+      chicken.x < this.x + this.sx &&
+      chicken.x + chicken.sx > this.x &&
+      chicken.y < this.y + this.sy &&
+      chicken.y + chicken.sy > this.y
+    ) {
+      return 1;
     }
     return null;
   }
-
-
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (ChickenCoop);
@@ -241,84 +236,92 @@ __webpack_require__.r(__webpack_exports__);
 const SPRITESIZE = 80;
 
 class Game {
-  constructor(ctx){
+  constructor(ctx) {
     this.ctx = ctx;
     this.map = new _map__WEBPACK_IMPORTED_MODULE_1__["default"](ctx);
     this.chicken = new _chicken__WEBPACK_IMPORTED_MODULE_0__["default"](ctx);
     this.chickenCoop = new _chicken_coop__WEBPACK_IMPORTED_MODULE_3__["default"](ctx);
     this.mouseDown = false;
     this.loseImage = new Image();
-    this.loseImage.src = './images/roasted_chicken.png';
+    this.loseImage.src = "./images/roasted_chicken.png";
     this.animate = this.animate.bind(this);
-    this.stopGame = this.stopGame.bind(this);
-    this.update = this.update.bind(this);
-    this.checkCollision = this.checkCollision.bind(this);
-    this.updateScore = this.updateScore.bind(this);
     this.score = 0;
     this.music = true;
-
   }
 
-
-  init(){
+  init() {
     this.map.makeCeiling();
     this.chicken.draw();
     this.map.makePlatform();
     this.map.makeFire();
     this.ctx.font = "7vw Sans-serif";
-    const gradient= this.ctx.createLinearGradient(0,0,800,150);
-    gradient.addColorStop("0.33","#F0CB35");
-    gradient.addColorStop("0.66","#fe8c00");
-    gradient.addColorStop("0.99","#C02425");
-    this.ctx.fillStyle= gradient;
-    this.ctx.fillText("Press Spacebar",200, 200);
+    const gradient = this.ctx.createLinearGradient(0, 0, 800, 150);
+    gradient.addColorStop("0.33", "#F0CB35");
+    gradient.addColorStop("0.66", "#fe8c00");
+    gradient.addColorStop("0.99", "#C02425");
+    this.ctx.fillStyle = gradient;
+    this.ctx.fillText("Press Spacebar", 200, 200);
     this.ctx.fillText("to", 500, 300);
     this.ctx.fillText("Start!", 420, 400);
   }
 
-  checkCollision(){
-    if (this.hook){
+  checkCollision() {
+    if (this.hook) {
       return this.hook.checkCollision(this.map.ceiling);
-    }else {
+    } else {
       return null;
     }
   }
 
-
-
-  update(){
-    if(this.chickenCoop.checkWin(this.chicken)){
+  update() {
+    if (this.chickenCoop.checkWin(this.chicken)) {
       this.ctx.font = "6vw Sans-serif";
-      this.ctx.fillStyle="#f4a142";
-      this.ctx.fillText("CONGRATS YOU WIN!",
-        this.ctx.canvas.width * 0.86, this.ctx.canvas.height /2);
+      this.ctx.fillStyle = "#f4a142";
+      this.ctx.fillText(
+        "CONGRATS YOU WIN!",
+        this.ctx.canvas.width * 0.86,
+        this.ctx.canvas.height / 2
+      );
       this.ctx.font = "6vw Sans-serif";
-      this.ctx.fillText("Press R to Restart",
-        this.ctx.canvas.width * 0.87, this.ctx.canvas.height /2 + 200);
-    }else if (this.chicken.lose()){
-      let textPlace = this.score < this.ctx.canvas.width * 0.85/100 ?
-        this.chicken.x : this.ctx.canvas.width * 0.88;
-      this.ctx.drawImage(this.loseImage,this.chicken.x,this.chicken.y,SPRITESIZE,SPRITESIZE);
+      this.ctx.fillText(
+        "Press R to Restart",
+        this.ctx.canvas.width * 0.87,
+        this.ctx.canvas.height / 2 + 200
+      );
+    } else if (this.chicken.lose()) {
+      let textPlace =
+        this.score < (this.ctx.canvas.width * 0.85) / 100
+          ? this.chicken.x
+          : this.ctx.canvas.width * 0.88;
+      this.ctx.drawImage(
+        this.loseImage,
+        this.chicken.x,
+        this.chicken.y,
+        SPRITESIZE,
+        SPRITESIZE
+      );
       this.ctx.font = "9vw Sans-serif";
-      this.ctx.fillStyle="red";
-      this.ctx.fillText("BBQ Chicken",
-        textPlace, this.ctx.canvas.height /2);
+      this.ctx.fillStyle = "red";
+      this.ctx.fillText("BBQ Chicken", textPlace, this.ctx.canvas.height / 2);
       this.ctx.font = "6vw Sans-serif ";
-      this.ctx.fillText("Press R to Restart",
-          textPlace, this.ctx.canvas.height /2 + 200);
-    }else{
-      if(this.mouseDown){
-        if(!this.checkCollision()){
+      this.ctx.fillText(
+        "Press R to Restart",
+        textPlace,
+        this.ctx.canvas.height / 2 + 200
+      );
+    } else {
+      if (this.mouseDown) {
+        if (!this.checkCollision()) {
           this.hook.draw();
         }
       }
-      if(this.checkCollision()){
+      if (this.checkCollision()) {
         this.chicken.updateSwing(this.hook);
         this.hook.setPos(this.chicken.x + this.chicken.sx, this.chicken.y);
         this.hook.update();
-      }else if(!this.checkCollision()){
-        this.chicken.x += this.chicken.dx/50;
-        this.chicken.y += + 0.80;
+      } else if (!this.checkCollision()) {
+        this.chicken.x += this.chicken.dx / 50;
+        this.chicken.y += +0.8;
         this.chicken.animate();
       }
       this.map.makeAnimatedFire();
@@ -327,31 +330,30 @@ class Game {
     }
   }
 
-  updateScore(){
-    this.score = Math.floor((this.chicken.x - 90)/100);
+  updateScore() {
+    this.score = Math.floor((this.chicken.x - 90) / 100);
     this.ctx.font = "2vw Courier";
-    this.ctx.fillStyle = 'black';
+    this.ctx.fillStyle = "black";
     this.ctx.fillText(`Score: ${this.score}`, this.chicken.x - 50, 80);
   }
 
-  panUser(){
+  panUser() {
     let canvasHolder = document.getElementById("canvas-holder");
     canvasHolder.scrollLeft = this.chicken.x - 100;
   }
 
-  animate(){
+  animate() {
     this.frame = requestAnimationFrame(this.animate);
-    this.ctx.clearRect(0,50,this.ctx.canvas.width, this.ctx.canvas.height);
+    this.ctx.clearRect(0, 50, this.ctx.canvas.width, this.ctx.canvas.height);
     this.panUser();
     this.update();
   }
 
   stopGame() {
-    if(this.frame){
+    if (this.frame) {
       cancelAnimationFrame(this.frame);
     }
   }
-
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Game);
@@ -368,36 +370,32 @@ class Game {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-
-
 class Hook {
-  constructor(ctx){
+  constructor(ctx) {
     this.ctx = ctx;
     this.yEnd = 50;
-    this.draw = this.draw.bind(this);
     this.aVel = 0;
   }
 
-  checkCollision(otherObj){
+  checkCollision(otherObj) {
     let collision = Object.values(otherObj).filter(ceiling => {
-        return(
-          this.xEnd >= ceiling.x && this.xEnd <= (ceiling.x + ceiling.width)
-        );
+      return this.xEnd >= ceiling.x && this.xEnd <= ceiling.x + ceiling.width;
+    });
 
-      });
-
-      return collision[0];
-    }
-
-  setPos(x,y){
-    this.x = x;
-    this.y = y;
-    this.radian= this.radian || Math.atan((this.xEnd-x)/Math.abs(this.yEnd-y));
-    this.length = this.length || Math.sqrt(Math.pow((this.xEnd-x),2)+Math.pow((this.yEnd-y),2));
-
+    return collision[0];
   }
 
-  update(){
+  setPos(x, y) {
+    this.x = x;
+    this.y = y;
+    this.radian =
+      this.radian || Math.atan((this.xEnd - x) / Math.abs(this.yEnd - y));
+    this.length =
+      this.length ||
+      Math.sqrt(Math.pow(this.xEnd - x, 2) + Math.pow(this.yEnd - y, 2));
+  }
+
+  update() {
     let aAcc = -0.01 * Math.sin(this.radian);
     this.radian += this.aVel;
     this.aVel += aAcc;
@@ -409,10 +407,9 @@ class Hook {
   draw() {
     this.ctx.beginPath();
     this.ctx.moveTo(this.x, this.y);
-    this.ctx.lineTo(this.xEnd,this.yEnd);
+    this.ctx.lineTo(this.xEnd, this.yEnd);
     this.ctx.stroke();
   }
-
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Hook);
@@ -527,48 +524,47 @@ __webpack_require__.r(__webpack_exports__);
 const RADIUS = 50;
 
 class Map {
-  constructor(ctx){
+  constructor(ctx) {
     this.ctx = ctx;
     this.ceiling = {};
-    this.makeCeiling = this.makeCeiling.bind(this);
   }
 
-  makeCeiling(){
-    let ceilingCount = Math.round(this.ctx.canvas.width /363);
+  makeCeiling() {
+    let ceilingCount = Math.round(this.ctx.canvas.width / 363);
     let x = 0;
     let y = 0;
     let width = (Math.random() + 0.5) * 300;
-    for(let i = 0; i < ceilingCount; i++) {
-      this.ceiling[i] = new _ceiling__WEBPACK_IMPORTED_MODULE_0__["default"](this.ctx,x,y,width);
+    for (let i = 0; i < ceilingCount; i++) {
+      this.ceiling[i] = new _ceiling__WEBPACK_IMPORTED_MODULE_0__["default"](this.ctx, x, y, width);
       x = x + width + (Math.random() + 0.5) * 100;
-      width = (Math.random()+ 0.5) * 300;
-      if(x + width > this.ctx.canvas.width){
+      width = (Math.random() + 0.5) * 300;
+      if (x + width > this.ctx.canvas.width) {
         width = this.ctx.canvas.width - x;
       }
     }
   }
 
-  makePlatform(){
+  makePlatform() {
     let startX = 50;
     let startY = 300;
     let platformWidth = 100;
-    this.ctx.fillRect(startX,startY,platformWidth, startX);
+    this.ctx.fillRect(startX, startY, platformWidth, startX);
   }
 
-  makeAnimatedFire(){
+  makeAnimatedFire() {
     let fire = new Image();
     fire.src = "./images/fire.png";
     let sx2 = 50;
     let sy2 = 50;
     let cx2 = -5;
     let cy2 = this.ctx.canvas.height - sy2;
-    while(cx2 < this.ctx.canvas.width - sx2){
-      this.ctx.drawImage(fire, cx2,cy2, sx2,sy2);
+    while (cx2 < this.ctx.canvas.width - sx2) {
+      this.ctx.drawImage(fire, cx2, cy2, sx2, sy2);
       cx2 += sx2 - 5;
     }
   }
 
-  makeFire(){
+  makeFire() {
     let fire = new Image();
     fire.src = "./images/fire.png";
     let sx2 = 50;
@@ -576,8 +572,8 @@ class Map {
     let cx2 = -5;
     let cy2 = this.ctx.canvas.height - sy2;
     fire.onload = () => {
-      while(cx2 < this.ctx.canvas.width - sx2){
-        this.ctx.drawImage(fire, cx2,cy2, sx2,sy2);
+      while (cx2 < this.ctx.canvas.width - sx2) {
+        this.ctx.drawImage(fire, cx2, cy2, sx2, sy2);
         cx2 += sx2 - 5;
       }
     };
