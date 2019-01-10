@@ -247,6 +247,7 @@ class Game {
     this.animate = this.animate.bind(this);
     this.score = 0;
     this.music = true;
+    this.start = false;
   }
 
   init() {
@@ -344,6 +345,7 @@ class Game {
 
   animate() {
     this.frame = requestAnimationFrame(this.animate);
+    this.start = true;
     this.ctx.clearRect(0, 50, this.ctx.canvas.width, this.ctx.canvas.height);
     this.panUser();
     this.update();
@@ -352,6 +354,7 @@ class Game {
   stopGame() {
     if (this.frame) {
       cancelAnimationFrame(this.frame);
+      this.start = false;
     }
   }
 }
@@ -446,7 +449,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener("keypress", event => {
     if (event.keyCode === 32) {
-      game.animate();
+      if (!game.start) {
+        game.animate();
+      }
       if (!audioPlayer.hasAttribute("muted")) {
         audioPlayer.play();
       }
