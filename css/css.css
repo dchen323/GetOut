@@ -1,6 +1,7 @@
 #canvas {
   border: 1px solid black;
-  background: lightgray;
+  background-image: url("../images/field.jpg");
+  background-size: contain;
   height: 100%;
 }
 
@@ -25,18 +26,18 @@ body {
   text-align: center;
 }
 
-.background{
-  background-image: url('../images/chicken_background.jpg');
+.background {
+  background-image: url("../images/chicken_background.jpg");
   background-size: cover;
 }
 
 .title {
-  font-family: 'Eater', cursive;
+  font-family: "Eater", cursive;
   font-size: 3vw;
 }
 
-.direction{
-  font-family: 'Oswald', sans-serif;
+.direction {
+  font-family: "Oswald", sans-serif;
   font-size: 1.5vw;
   justify-content: center;
   margin: 0 1.5vw;
@@ -53,9 +54,10 @@ body {
   font-size: 5vw;
 }
 
-#audio-play, #audio-pause {
+#audio-play,
+#audio-pause {
   width: 20%;
-  margin: 1vw
+  margin: 1vw;
 }
 
 .hidden {
