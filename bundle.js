@@ -433,10 +433,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 document.addEventListener("DOMContentLoaded", () => {
-  const canvas = document.getElementById('canvas');
-  const ctx = canvas.getContext('2d');
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
   let canvasHolder = document.getElementById("canvas-holder");
 
   canvas.width = window.innerWidth * 5;
@@ -444,11 +443,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const game = new _game__WEBPACK_IMPORTED_MODULE_0__["default"](ctx);
   game.init();
 
-  document.addEventListener('keypress', (event) => {
-    if (event.keyCode === 32){
+  document.addEventListener("keypress", event => {
+    if (event.keyCode === 32) {
+      const audioPlayer = document.getElementById("audio");
+      audioPlayer.play();
       game.animate();
-    }else if( event.keyCode === 114){
-      ctx.clearRect(0,0, canvas.width, canvas.height);
+    } else if (event.keyCode === 114) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       game.stopGame();
       game.chicken.x = 90;
       game.chicken.y = 260;
@@ -460,51 +461,47 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-
-
-
-  document.addEventListener('mousedown', (event) => {
+  document.addEventListener("mousedown", event => {
     let eventx = event.x - canvas.getBoundingClientRect().left;
     let hook = new _hook__WEBPACK_IMPORTED_MODULE_1__["default"](ctx);
     hook.xEnd = eventx;
-    hook.setPos(game.chicken.x + game.chicken.sx,game.chicken.y - 2);
-    if (event.x > window.innerWidth/ 4){
+    hook.setPos(game.chicken.x + game.chicken.sx, game.chicken.y - 2);
+    if (event.x > window.innerWidth / 4) {
       const sound = new _sound__WEBPACK_IMPORTED_MODULE_2__["default"]("./sound/launch.wav");
       sound.play();
     }
     game.hook = hook;
     game.mouseDown = true;
-
   });
 
-  document.addEventListener('mouseup', (event) => {
+  document.addEventListener("mouseup", event => {
     game.mouseDown = false;
     game.hook = null;
   });
 
-  document.addEventListener('click', (event) => {
-    if(event.target.id === "audio-play" || event.target.id === "audio-pause" ||
-        event.target.className === "fas fa-pause" || event.target.className === 'fas fa-play'){
-          const audioPlay = document.getElementById('audio-play');
-          const audioPause = document.getElementById('audio-pause');
-          const audioPlayer = document.getElementById('audio');
-          if (game.music === true){
-            audioPlayer.pause();
-            audioPause.className = "hidden";
-            audioPlay.classList.remove("hidden");
-            game.music = false;
-          }else{
-            audioPlayer.play();
-            audioPlay.className = "hidden";
-            audioPause.classList.remove("hidden");
-            game.music = true;
-          }
-        }
+  document.addEventListener("click", event => {
+    if (
+      event.target.id === "audio-play" ||
+      event.target.id === "audio-pause" ||
+      event.target.className === "fas fa-pause" ||
+      event.target.className === "fas fa-play"
+    ) {
+      const audioPlay = document.getElementById("audio-play");
+      const audioPause = document.getElementById("audio-pause");
+      const audioPlayer = document.getElementById("audio");
+      if (game.music === true) {
+        audioPlayer.pause();
+        audioPause.className = "hidden";
+        audioPlay.classList.remove("hidden");
+        game.music = false;
+      } else {
+        audioPlayer.play();
+        audioPlay.className = "hidden";
+        audioPause.classList.remove("hidden");
+        game.music = true;
+      }
+    }
   });
-
-
-
-
 });
 
 
