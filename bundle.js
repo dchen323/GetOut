@@ -442,12 +442,14 @@ document.addEventListener("DOMContentLoaded", () => {
   canvas.height = window.innerHeight;
   const game = new _game__WEBPACK_IMPORTED_MODULE_0__["default"](ctx);
   game.init();
+  const audioPlayer = document.getElementById("audio");
 
   document.addEventListener("keypress", event => {
     if (event.keyCode === 32) {
-      const audioPlayer = document.getElementById("audio");
-      audioPlayer.play();
       game.animate();
+      if (!audioPlayer.hasAttribute("muted")) {
+        audioPlayer.play();
+      }
     } else if (event.keyCode === 114) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       game.stopGame();
@@ -488,12 +490,13 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
       const audioPlay = document.getElementById("audio-play");
       const audioPause = document.getElementById("audio-pause");
-      const audioPlayer = document.getElementById("audio");
       if (game.music === true) {
         audioPlayer.pause();
         audioPause.className = "hidden";
         audioPlay.classList.remove("hidden");
         game.music = false;
+        audioPlayer.setAttribute("muted", "");
+        console.log(audioPlayer);
       } else {
         audioPlayer.play();
         audioPlay.className = "hidden";
