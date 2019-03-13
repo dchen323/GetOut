@@ -12,10 +12,6 @@
     />
     <link rel="icon" href="images/favicon.png" />
     <link
-      href="https://fonts.googleapis.com/css?family=Eater"
-      rel="stylesheet"
-    />
-    <link
       href="https://fonts.googleapis.com/css?family=Oswald"
       rel="stylesheet"
     />
@@ -36,22 +32,25 @@
   </head>
 
   <body class="game">
-    <div class="sidebar">
+    <div id="instruction">
       <h2 class="title">Get Out</h2>
-      <div class="direction-audio">
-        <content class="direction">
-          Hold the mouse down to create a hook and release to swing towards the
-          finish line! Be careful not to fall in the fire!
-          <audio loop id="audio">
-            <source src="./sound/OffLimits.wav" type="audio/wav" />
-          </audio>
-        </content>
-        <button id="audio-pause"><i class="fas fa-pause"></i></button>
-        <button id="audio-play" class="hidden">
-          <i class="fas fa-play"></i>
-        </button>
-      </div>
-      <div class="background"></div>
+      <h3 class="instruction-title">Instructions:</h3>
+      <content class="direction">
+        Hold the mouse down to create a hook and release to swing towards the
+        finish line! Be careful not to fall in the fire!
+      </content>
+      <content class="direction start">
+        Press Spacebar to start!
+      </content>
+    </div>
+    <div class="sidebar">
+      <audio loop id="audio">
+        <source src="./sound/OffLimits.wav" type="audio/wav" />
+      </audio>
+      <button id="audio-pause"><i class="fas fa-pause"></i></button>
+      <button id="audio-play" class="hidden">
+        <i class="fas fa-play"></i>
+      </button>
       <div class="self">
         <a href="https://github.com/dchen323/GetOut"
           ><i class="fab fa-github icon-git"></i
@@ -61,6 +60,7 @@
         ></a>
       </div>
     </div>
+
     <div id="canvas-holder"><canvas id="canvas"></canvas></div>
   </body>
   <script type="text/javascript" src="bundle.js"></script>

@@ -1,71 +1,77 @@
 #canvas {
-  border: 1px solid black;
   background-image: url("../images/field.jpg");
   background-size: contain;
   height: 100%;
+  padding-bottom: 5px;
 }
 
 body {
   display: flex;
   flex-direction: row;
   margin: 0;
+  font-family: "Oswald", sans-serif;
+  background: #f2eded;
+  overflow: hidden;
 }
 
 #canvas-holder {
   overflow: hidden;
   width: 75vw;
   height: auto;
-  border-right: 1px solid black;
+  border: 1px solid black;
+  margin: auto;
 }
 
 .sidebar {
-  height: auto;
-  width: 25%;
-  display: grid;
-  grid-template-rows: 0.5fr 0.5fr 1.5fr 0.5fr;
-  text-align: center;
-}
-
-.background {
-  background-image: url("../images/chicken_background.jpg");
-  background-size: cover;
+  position: fixed;
 }
 
 .title {
-  font-family: "Eater", cursive;
   font-size: 3vw;
 }
 
 .direction {
-  font-family: "Oswald", sans-serif;
   font-size: 1.5vw;
-  justify-content: center;
   margin: 0 1.5vw;
+  text-align: center;
 }
 
-.self {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
+.instruction-title {
+  text-decoration: underline;
 }
 
+.start {
+  color: red;
+}
 .icon-git {
   font-size: 5vw;
 }
 
 #audio-play,
-#audio-pause {
-  width: 20%;
+#audio-pause,
+.self {
   margin: 1vw;
+}
+
+#instruction {
+  position: fixed;
+  top: 20%;
+  left: 35%;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  border: 1px solid black;
+  align-items: center;
+  background: beige;
+  height: 55%;
+  border-radius: 10px;
+  overflow: auto;
 }
 
 .hidden {
   display: none;
 }
 
-.direction-audio {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+#hidden {
+  display: none;
 }

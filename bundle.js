@@ -96,7 +96,7 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 class Ceiling {
-  constructor(ctx,x,y,width){
+  constructor(ctx, x, y, width) {
     this.ctx = ctx;
     this.x = x;
     this.y = y;
@@ -106,8 +106,12 @@ class Ceiling {
     this.dx = 0;
   }
 
-  draw(){
-    this.ctx.fillRect(this.x,this.y,this.width,this.length);
+  draw() {
+    let cloud = new Image();
+    cloud.src = "./images/cloud2.png";
+    cloud.onload = () => {
+      this.ctx.drawImage(cloud, this.x, this.y, this.width, this.length);
+    };
   }
 }
 
@@ -256,15 +260,6 @@ class Game {
     this.chicken.draw();
     this.map.makePlatform();
     this.map.makeFire();
-    this.ctx.font = `7vw ${font}`;
-    const gradient = this.ctx.createLinearGradient(0, 0, 800, 150);
-    gradient.addColorStop("0.33", "#F0CB35");
-    gradient.addColorStop("0.66", "#fe8c00");
-    gradient.addColorStop("0.99", "#C02425");
-    this.ctx.fillStyle = gradient;
-    this.ctx.fillText("Press Spacebar", 220, 200);
-    this.ctx.fillText("to", 420, 300);
-    this.ctx.fillText("Start!", 360, 400);
     this.ctx.font = `1.5vw ${font}`;
     this.ctx.fillStyle = "red";
     this.ctx.fillText(
@@ -460,9 +455,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const game = new _game__WEBPACK_IMPORTED_MODULE_0__["default"](ctx);
   game.init();
   const audioPlayer = document.getElementById("audio");
-
+  const instructions = document.getElementById("instruction");
   document.addEventListener("keypress", event => {
     if (event.keyCode === 32) {
+      instructions.id = "hidden";
       if (!game.start) {
         game.animate();
       }
@@ -479,6 +475,7 @@ document.addEventListener("DOMContentLoaded", () => {
       game.chicken.animate();
       canvasHolder.scrollLeft = 0;
       game.init();
+      document.getElementById("hidden").id = "instruction";
     }
   });
 
@@ -566,8 +563,12 @@ class Map {
   makePlatform() {
     let startX = 50;
     let startY = 300;
-    let platformWidth = 100;
-    this.ctx.fillRect(startX, startY, platformWidth, startX);
+    let size = 100;
+    let cage = new Image();
+    cage.src = "./images/cage.png";
+    cage.onload = () => {
+      this.ctx.drawImage(cage, startX, startY, size, size);
+    };
   }
 
   makeAnimatedFire() {
