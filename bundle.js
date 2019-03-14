@@ -512,7 +512,6 @@ document.addEventListener("DOMContentLoaded", () => {
         audioPlay.classList.remove("hidden");
         game.music = false;
         audioPlayer.setAttribute("muted", "");
-        console.log(audioPlayer);
       } else {
         audioPlayer.play();
         audioPlay.className = "hidden";
